@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Jarvis · Personal AI</title><link rel="stylesheet" href="/style.css"></head>
+<body><main>
+<header><div class="brand"><span class="orb">J</span><div><h1>Jarvis</h1><p>Private. Local. Yours.</p></div></div><span id="connection" class="pill">Connecting</span></header>
+<section id="login"><h2>Connect this device</h2><p>On the host Mac, allow Jarvis to read its own device token if macOS shows a Keychain prompt. Other devices use their unique token created on the host. Your conversations stay on your local server.</p><input id="token" type="password" autocomplete="off" placeholder="Device token"><button id="connect">Connect securely</button><p id="loginError" class="error"></p></section>
+<div id="workspace" hidden>
+<nav><button data-panel="chatPanel" class="selected">Conversation</button><button data-panel="memoryPanel">Memory</button><button data-panel="settingsPanel">Settings & status</button></nav>
+<section id="chatPanel" class="panel">
+<div class="modelbar"><span id="model">Local model</span><span id="storage">Checking storage</span></div>
+<p id="capabilities" class="subtle"></p>
+<div id="messages" role="log" aria-live="polite"></div>
+<div id="approvals"></div>
+<div class="voicebar"><span id="voiceState">Microphone off</span><button id="wake">Wake listening</button><button id="ptt">Push to talk</button><button id="mute">Mute</button><button id="cancel">Cancel</button></div>
+<form id="chatForm"><textarea id="prompt" rows="2" placeholder="Ask a question or request an approved action…" aria-label="Message"></textarea><button id="send" type="submit">Send</button></form>
+<p id="error" class="error" role="alert"></p><p id="metrics" class="subtle"></p>
+</section>
+<section id="memoryPanel" class="panel" hidden><h2>What you choose to remember</h2><p>Saved facts are shared with your authorized devices. Saving is always your choice.</p><form id="memoryForm"><input id="memoryText" placeholder="A preference or useful fact" maxlength="2000"><button>Save memory</button></form><div id="memories"></div><h2>Search conversations</h2><form id="searchForm"><input id="searchText" placeholder="Search local history"><button>Search</button></form><div id="searchResults"></div><button id="export">Export history & memory</button></section>
+<section id="settingsPanel" class="panel" hidden><h2>Assistant settings</h2><div id="adminSettings"><label>Conversation model <select id="modelSelect"></select></label><label>File & web model <select id="toolModelSelect"></select></label><label>Voice <select id="voiceSelect"></select></label><label>Speech rate <input id="rate" type="number" min="80" max="300"></label><label>Follow-up seconds <input id="followup" type="number" min="0" max="30"></label><label>History retention (days) <input id="retention" type="number" min="1" max="3650"></label><button id="saveSettings">Save settings</button><button id="exportSettings">Export settings</button><button id="reloadModel">Unload / reload model</button></div><label>Microphone <select id="micSelect"><option value="">System default</option></select></label><p>Audio output follows this device’s system sound settings. Wake listening runs while this client is open. iPhone activation uses the Push to talk button.</p><h2>Server & devices</h2><pre id="status"></pre><h2>Recent tool executions</h2><div id="events"></div><button id="disconnect">Disconnect this session</button></section>
+</div><footer>Local inference · Encrypted connection · Explicit permissions</footer>
+</main><script src="/app.js"></script></body></html>

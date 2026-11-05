@@ -1,0 +1,6 @@
+#!/bin/sh
+set -eu
+TASK_BASE=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+cd "$TASK_BASE"
+export PYTHONPATH="$TASK_BASE"
+exec "$TASK_BASE/.venv/bin/python" -m assistant.cli "$@"
